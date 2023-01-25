@@ -28,9 +28,9 @@ const InstagramFeed = ({ feed, rows, columns }) => {
             switch (post.media_type) {
               case "IMAGE":
               case "CAROUSEL_ALBUM":
-                return <a href={post.permalink} target='_blank'><img src={post.media_url}  /></a>;
+                return <a href={post.permalink} target='_blank' rel="noreferrer noopener"><img src={post.media_url}  /></a>;
               case "VIDEO":
-                return <a href={post.permalink} target='_blank'><img src={post.thumbnail_url} /></a>;
+                return <a href={post.permalink} target='_blank' rel="noreferrer noopener"><img src={post.thumbnail_url} /></a>;
               default:
                 return <></>;
             }
