@@ -20,9 +20,9 @@ const Footer = () => {
 
       <div className='socials-nav'>
         <div className='socials-embed'>
-          <a href='https://wa.me/9552509634' target='_blank'><BsWhatsapp /></a>
-          <a href='https://www.instagram.com/team.aesthetix/' target='_blank'><BsInstagram /></a>
-          <a href='mailto:team.aesthetix@gmail.com' target='_blank'><SiGmail/></a>
+          <a href='https://wa.me/9552509634' target='_blank' rel="noreferrer noopener"><BsWhatsapp /></a>
+          <a href='https://www.instagram.com/team.aesthetix/' target='_blank' rel="noreferrer noopener"><BsInstagram /></a>
+          <a href='mailto:team.aesthetix@gmail.com' target='_blank' rel="noreferrer noopener"><SiGmail/></a>
         </div>
 
         <div className='footer-nav'>

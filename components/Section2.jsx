@@ -57,7 +57,7 @@ const Section2 = ({section}) => {
           transition={{duration: 0.5}}
           className='section-content blog'          
         >
-          <h1>I USE MY INSTAGRAM FEED AS A 'MINI BLOG'</h1>
+          <h1>I USE MY INSTAGRAM FEED AS A MINI BLOG</h1>
           {/* <img src={urlFor(section.image[0])}/>
           {section.largeText2 && <h1>{section.largeText2[0]}</h1>} 
           {section.desc2 && <p>{section.desc2[0]} <a style={{ textDecoration: 'underline',fontStyle: 'italic'}}> ...Read More</a></p>} */}

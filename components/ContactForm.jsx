@@ -81,10 +81,10 @@ const ContactForm = ({page}) => {
         {
           page === 'coaching' ? 
           <><h1>LOOKING TO KICKSTART YOUR FITNESS JOURNEY?</h1>
-          <p>Fill out that form and I'll make sure one of my team members gets back to you pronto. Let's do this!</p></>:
+          <p>Fill out that form and I&apos;ll make sure one of my team members gets back to you pronto. Let&apos;s do this!</p></>:
           page === 'contact' ? 
           <><h1>TO GET IN TOUCH FILL THE FORM BELOW</h1>
-          <p style={{color:'#fff'}}>I'll make sure one of my team members gets back to you pronto!</p></>:
+          <p style={{color:'#fff'}}>I&apos;ll make sure one of my team members gets back to you pronto!</p></>:
           <h1>Nothing</h1>
         }
         
