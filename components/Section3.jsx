@@ -74,7 +74,7 @@ const Section3 = ({section, products}) => {
             </div>  
             {limitedData.slice(0,sliceNumber).map((product)=>(
               
-              <Product product={product}/>
+              <Product key={product._id} product={product}/>
               
               
               // <Link href={`/${product.title}`}>

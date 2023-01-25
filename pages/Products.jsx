@@ -16,8 +16,8 @@ const Products = ({productdata}) => {
         <h1>SHOP FOR EBOOKS AND PROGRAMS</h1>
       </div>
       <div className={styles.productsContainer}>
-      {productdata?.map((product) => (
-        <Product product={product}/>
+      {productdata?.map((product,index) => (
+        <Product key={index} product={product}/>
       ))}
       </div>
       

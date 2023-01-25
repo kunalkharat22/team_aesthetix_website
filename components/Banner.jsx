@@ -5,7 +5,7 @@ import AnimatedTitle from './AnimatedTitle';
 
 const Banner = ({bannerData}) => {
 
-  console.log('banner',bannerData.buttonLink);
+  console.log('banner',bannerData);
 
   // const [screenSize, setScreenSize] = useState("")
 
@@ -38,8 +38,7 @@ const Banner = ({bannerData}) => {
           <a className='revue-action-field' href={`/Products/${bannerData.buttonLink}`}>{bannerData.buttonText}</a>
           <div className='banner-box-container'>
             {bannerData.boxes.map((box) => 
-            ( <>
-            
+            ( <div key={box._key}>            
               <div className='banner-box'>  
                 <img src={urlFor(box.boxImage)}/>
                 <p>{box.boxTitle}</p>
@@ -47,7 +46,7 @@ const Banner = ({bannerData}) => {
               <div className='banner-box-animate'>                  
                 <AnimatedTitle text={box.boxTitle}/>
               </div>
-              </>
+              </div>
             )
             )}
           </div>

@@ -18,8 +18,6 @@ const initState = { values: initValues }
 
 const ContactForm = ({page}) => {
 
-  console.log('page',page);
-
   const [state, setstate] = useState(initState)
   const [touched, setTouched] = useState({})
 

@@ -20,18 +20,19 @@ const Footer = () => {
 
       <div className='socials-nav'>
         <div className='socials-embed'>
-          <BsWhatsapp />
-          <BsInstagram />
-          <SiGmail/>
+          <a href='https://wa.me/9552509634' target='_blank'><BsWhatsapp /></a>
+          <a href='https://www.instagram.com/team.aesthetix/' target='_blank'><BsInstagram /></a>
+          <a href='mailto:team.aesthetix@gmail.com' target='_blank'><SiGmail/></a>
         </div>
 
         <div className='footer-nav'>
-            {['Personal Coaching','Blogs','Products','Contact us'].map((item)=> (
+            {['Personal Coaching','Blogs','Products','Contact us'].map((item,index)=> (
               // <li key={`link-${item}`}>
-                <Link href={`/${item}`}>
+            
+                <Link key={index} href={`/${item}`}>
                   <p>{item}</p>
                 </Link>
-              // </li>
+              
             ))}
         </div>
       </div>

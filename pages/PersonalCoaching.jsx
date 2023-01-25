@@ -7,7 +7,6 @@ import {motion} from 'framer-motion'
 import ContactForm from '../components/ContactForm'
 
 const PersonalCoaching = ({coachingSections,testData,transformationsdata}) => {
-
   const [slideIndex, setSlideIndex] = useState(1)
   const [box, setBox] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -69,6 +68,7 @@ const moveDot = index => {
           <p>{coachingSections[1].desc}</p>
         </motion.div>
       </div>
+
       <div className={styles.containerTransformation}>
         <h1>TRANSFORMATION DIARIES</h1>
         <div className={styles.bgFlair}></div>
@@ -76,7 +76,7 @@ const moveDot = index => {
             {transformationsdata.map((obj, index) => {
                 return (
                     <div
-                    key={obj.id}
+                    key={obj._id}
                     className={slideIndex === index + 1 ? `${styles.slide} ${styles.activeAnim}` : styles.slide}
                     // className={styles.slide}
                     >  
@@ -119,7 +119,7 @@ const moveDot = index => {
             {testData.map((obj,index) => {
               return(
                 <div 
-                  key={obj.id}
+                  key={obj._id}
                   className={slideIndex === index + 1 ? `${styles.slide} ${styles.activeAnim}` : styles.slide}
                 >
                   <p>{obj.desc}</p>
