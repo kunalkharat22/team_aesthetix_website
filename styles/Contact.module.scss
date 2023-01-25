@@ -1,0 +1,41 @@
+.instagram{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  height: auto;
+  color: var(--white-color);
+  background-color: var(--black);
+
+  h1{
+    text-align: center;
+  }
+
+  a{
+
+    cursor: pointer;
+    transition: transform .4s ease;
+      &:hover {
+        transform: scale(1.1, 1.1);
+      }
+
+    svg {
+      font-size: 50px;
+      background: radial-gradient(
+        circle farthest-corner at 28% 100%,
+        #fcdf8f 0%,
+        #fbd377 10%,
+        #fa8e37 22%,
+        #f73344 35%,
+        transparent 65%
+      ),
+      linear-gradient(145deg, #3051f1 10%, #c92bb7 70%);;
+      border-radius: 1rem;
+    }
+  }
+}
+
+.instagram > * {
+  margin: 0 2rem;
+}

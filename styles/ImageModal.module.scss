@@ -1,0 +1,53 @@
+.imageModalContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.imageModalOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.imageModalContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 20rem;
+  min-height: 20rem;
+  overflow: auto;
+}
+
+.imageModalImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.imageModalCloseButton {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 10px;
+  right: 10px;
+  // font-size: 30px;
+  width: 35px;
+  height: 35px;
+  font-weight: bold;
+  color: white;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+}
