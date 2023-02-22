@@ -12,9 +12,9 @@ export default function CategoryLabel({ categories }) {
       {categories?.length &&
         categories.slice(0).map((category, index) => (
           // <Link href="#" key={index}>
-          //   <a>
+             <div key={index}>
               <Label color={category.color}>{category.title}</Label>
-          //   </a>
+             </div>
           // </Link>
         ))}
     </div>
