@@ -134,7 +134,7 @@ const scrollToSection = () => {
         <motion.div
           whileInView={{y: [-100,-50,0],opacity: [0,0,1]}}
           transition={{duration: 0.8}}
-          className={`${styles.container3} ${styles.bannerContainer}`}
+          className={`${styles.container3}`}
         >
           {/* {coachingSections.slice(2,).map((section,index)=>( */}
             <Carousal sections={coachingSections} index={carousalIndex} setIndex={setCarousalIndex}/>

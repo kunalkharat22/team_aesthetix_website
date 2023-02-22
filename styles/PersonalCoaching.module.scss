@@ -417,8 +417,17 @@
 }
 
 .container3{
- height: 100vh;
- margin: 3rem 0 !important;
+ height: auto;
+ margin: 3rem 0;
+ display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  position: relative;
+  height: auto;
+  min-height: 100vh;
+  width: 100%;
+  // padding: 7.5rem 0;
 }
 
 .slideshow {
