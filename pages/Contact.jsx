@@ -12,11 +12,11 @@ const Contact = () => {
 
       <div className={styles.instagram}>
         <h1>Connect to us on Instagram:</h1>
-        <a href='https://www.instagram.com/team.aesthetix/'>
+        <a href='upi://pay?pa=kanskharat222000@okaxis&pn=KunalKharat&cu=INR'>
           <BsInstagram />
         </a>
       </div>
-      <div>
+      <div className={styles.newsletter}>
         <Newsletter />
       </div>
     </div>

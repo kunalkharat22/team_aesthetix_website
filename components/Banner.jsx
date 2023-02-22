@@ -1,11 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import { urlFor } from '../lib/client'
 import AnimatedTitle from './AnimatedTitle';
+import {motion} from 'framer-motion'
+
+const bannerVariants = {
+  hidden: {
+    opacity: 0,
+    y: -100,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      damping: 20,
+      mass: 0.75,
+      stiffness: 100,
+    },
+  },
+}
 
 
 const Banner = ({bannerData}) => {
-
-  console.log('banner',bannerData);
 
   // const [screenSize, setScreenSize] = useState("")
 
@@ -30,7 +46,12 @@ const Banner = ({bannerData}) => {
   return (
     <div className='banner-container'>
       <img className='bg-img' src={urlFor(bannerData.image)}/>
-      <div className='banner-content'> 
+      <motion.div 
+        initial="hidden"
+        animate="visible"
+        variants={bannerVariants}
+        className='banner-content'
+      > 
         {/* <img src={urlFor(bannerData.image)}/> */}
         <div className='banner-text'>
           <h1>{bannerData.largeText1}</h1>
@@ -53,7 +74,7 @@ const Banner = ({bannerData}) => {
           
           {/* <img src='/ExploreMore.svg' style={{position:'absolute',bottom:'0',margin:'0'}}/> */}
         </div>
-      </div> 
+      </motion.div> 
     </div>
   )
 }

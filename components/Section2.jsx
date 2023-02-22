@@ -4,9 +4,9 @@ import { urlFor } from '../lib/client'
 import {motion} from 'framer-motion'
 import InstaFeed from './InstaFeed'
 import { getFeed } from '../lib/instagram'
+import GetImage from '../utils/getImage'
 
-
-const Section2 = ({section}) => {
+const Section2 = ({section, postData}) => {
 
   const [currentIndex, setCurrentIndex] = useState(0)
   
@@ -47,8 +47,11 @@ const Section2 = ({section}) => {
     return () => window.removeEventListener("resize", handleScreenSize);
   }, []);
 
-
+  const imageProps = postData?.mainImage
+  ? GetImage(postData.mainImage)
+  : null;
   
+
   return (
     <div className='section-container'>
       <div className={`section-container-bg`} style={{marginTop:'2.5rem'}}>
@@ -57,11 +60,18 @@ const Section2 = ({section}) => {
           transition={{duration: 0.5}}
           className='section-content blog'          
         >
-          <h1>I USE MY INSTAGRAM FEED AS A MINI BLOG</h1>
-          {/* <img src={urlFor(section.image[0])}/>
-          {section.largeText2 && <h1>{section.largeText2[0]}</h1>} 
-          {section.desc2 && <p>{section.desc2[0]} <a style={{ textDecoration: 'underline',fontStyle: 'italic'}}> ...Read More</a></p>} */}
-          <InstaFeed feed={feed} rows={2} columns={sliceNumber}/>
+          {/* <h1>I USE MY INSTAGRAM FEED AS A MINI BLOG</h1> */}
+          <img src={urlFor(postData.mainImage)}/>
+          {postData.title && <h1>{postData.title}</h1>} 
+          {postData.excerpt && 
+            <p>{postData.excerpt} 
+              <Link href={`/Blogs/${postData.slug.current}`}>
+                <a> 
+                  ...Read More
+                </a>
+              </Link>
+            </p>}
+          {/* <InstaFeed feed={feed} rows={2} columns={sliceNumber}/> */}
 
         </motion.div>
         

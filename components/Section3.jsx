@@ -72,7 +72,8 @@ const Section3 = ({section, products}) => {
                 </Link>
               </div>
             </div>  
-            {limitedData.slice(0,sliceNumber).map((product)=>(
+            {products.length ?
+              limitedData.slice(0,sliceNumber).map((product)=>(
               
               <Product key={product._id} product={product}/>
               
@@ -89,7 +90,9 @@ const Section3 = ({section, products}) => {
               // </Link>
 
 
-            ))}
+            )):(
+              <h1> New products coming soon </h1>
+            )}
             
             {/* <div className='section-content-2' style={{maxHeight:'100vh'}}>
               {section.midText1 && <h1>{section.midText1[0]}</h1>}

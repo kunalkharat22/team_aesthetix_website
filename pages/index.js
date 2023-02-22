@@ -5,7 +5,9 @@ import localStorage from 'localstorage-memory'
 
 import {client} from '../lib/client'
 
-const Home = ({sections, bannerData, productdata}) => {
+const Home = ({sections, bannerData, productdata, postData}) => {
+
+  // console.log('postdata',postData);
 
   return (
     <>
@@ -13,7 +15,7 @@ const Home = ({sections, bannerData, productdata}) => {
             
       <Section1 section={sections.length && sections[0]}/>
 
-      <Section2 section={sections.length && sections[1]}/>
+      <Section2 section={sections.length && sections[1]} postData={postData.length && postData[0]}/>
 
       <Section3 section={sections.length && sections[2]} products={productdata}/>
       
@@ -32,8 +34,16 @@ export const getServerSideProps = async () => {
   const productQuery = '*[_type == "products"]'
   const productdata = await client.fetch(productQuery)
 
+  const postQuery = `*[_type == "post"]| order(publishedAt desc, _createdAt desc) {
+    ...,
+    author->,
+    categories[]->
+  }
+  `
+  const postData = await client.fetch(postQuery)
+
   return{
-    props: {sections,bannerData,productdata}
+    props: {sections,bannerData,productdata, postData}
   }
 }
 

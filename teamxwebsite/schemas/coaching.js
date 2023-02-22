@@ -11,7 +11,12 @@ export default {
     {
       name: 'desc',
       title: 'Desc',
-      type: 'text',
+      type: "array",
+      of: [
+        {
+          type: 'block'
+        }
+      ]
     },
     {
       name: 'image',
@@ -20,6 +25,11 @@ export default {
       options: {
         hotspot: true
       },
+    },
+    {
+      name:'index',
+      title:'Index',
+      type:'string'
     }
     
     

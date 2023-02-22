@@ -30,26 +30,27 @@ export default {
     {
       name: 'midText1',
       title: 'MidText1',
-      type: 'array',
-      of: [{type:'string'}],
+      type: 'string',      
     },
     {
       name: 'largeText2',
       title: 'LargeText2',
-      type: 'array',
-      of: [{type:'string'}],
+      type: 'string',
     },
     {
       name: 'desc2',
       title: 'Desc2',
-      type: 'array',
-      of: [{type:'string'}],
+      type: "array",
+      of: [
+        {
+          type: 'block'
+        }
+      ]
     },
     {
       name: 'buttonText1',
       title: 'ButtonText1',
-      type: 'array',
-      of: [{type:'string'}],
+      type: 'string',
     },
     {
       name: 'orientation',

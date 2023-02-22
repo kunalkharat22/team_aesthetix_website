@@ -18,7 +18,7 @@ const InstagramFeed = ({ feed, rows, columns }) => {
 
 
   const sliceNo = rows*columns
-  console.log(feed);
+  // console.log(feed);
 
   return (
     <div className='feed-container'>

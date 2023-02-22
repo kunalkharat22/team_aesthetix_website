@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import { urlFor } from '../lib/client'
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
 import {motion} from 'framer-motion'
+import { PortableText } from '../lib/client';
 
 
 const Section1 = ({section}) => {
@@ -28,29 +29,29 @@ const Section1 = ({section}) => {
           </div>  
         </div>
         <div className='section-content-2'>
-        {section.image.length && (
+        
           <motion.div 
             initial={{opacity:0}}
             whileInView={{x: [-100,-50,0],opacity: [0,0,1]}}
             transition={{duration: 0.75}}
             key={currentIndex}             
             >
-            {section.midText1 && <h1>{section.midText1[currentIndex]}</h1>}
+            {/* {section.midText1 && <h1>{section.midText1[currentIndex]}</h1>} */}
             <img className='section-content-2-img' src={urlFor(section.image[currentIndex])}/>
-            <h1>{section.largeText2[currentIndex]}</h1>
-            {section.desc2 && <p>{section.desc2[currentIndex]}</p>}
+            <h1>{section.largeText2}</h1>
+            {/* {section.desc2 && <p>{section.desc2[currentIndex]}</p>} */}
+            {section.desc2 && <PortableText value={section.desc2} />}
             
-            
-            <div className='section-content-2-btns'>
+            {/* <div className='section-content-2-btns'>
               <div onClick={() => handleClick(currentIndex === 0 ? section.image.length - 1 : currentIndex - 1)}>
                 <HiChevronDoubleLeft />
               </div>
               <div onClick={() => handleClick(currentIndex === section.image.length - 1 ? 0 : currentIndex + 1)}>
                 <HiChevronDoubleRight />
               </div>              
-            </div>
+            </div> */}
           </motion.div>
-        )}
+        
         </div>
 
 

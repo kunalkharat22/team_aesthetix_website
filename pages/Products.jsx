@@ -5,6 +5,7 @@ import {client} from '../lib/client'
 import { urlFor } from '../lib/client'
 import Product from '../components/Product.jsx'
 import back from '../public/back.jpg'
+import Newsletter from '../components/Newsletter'
 
 const Products = ({productdata}) => {
  
@@ -16,11 +17,22 @@ const Products = ({productdata}) => {
         <h1>SHOP FOR EBOOKS AND PROGRAMS</h1>
       </div>
       <div className={styles.productsContainer}>
-      {productdata?.map((product,index) => (
+      {productdata.length ?
+        productdata?.map((product,index) => (
         <Product key={index} product={product}/>
-      ))}
+      )):(
+        <h1> New products coming soon </h1>
+      )}
       </div>
-      
+      <div className={styles.coachingCta}>
+        <h1>Not sure what to get?</h1>
+        <Link href={`/PersonalCoaching`}>
+          <button className='btn'>Try Personal Coaching</button>
+        </Link>
+      </div>
+      <div className={styles.newsletter}>
+        <Newsletter />
+      </div>
       
     </div>
   )

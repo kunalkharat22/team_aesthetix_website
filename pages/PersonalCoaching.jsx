@@ -1,17 +1,45 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import styles from '../styles/PersonalCoaching.module.scss'
 import {client} from '../lib/client'
 import { urlFor } from '../lib/client'
 import { HiChevronDoubleLeft, HiChevronDoubleRight } from 'react-icons/hi'
 import {motion} from 'framer-motion'
 import ContactForm from '../components/ContactForm'
+import { PortableText } from '../lib/client'
+import Carousal from '../components/Carousal'
+
+const delay = 20000;
 
 const PersonalCoaching = ({coachingSections,testData,transformationsdata}) => {
   const [slideIndex, setSlideIndex] = useState(1)
+  const [slideIndex1, setSlideIndex1] = useState(1)
   const [box, setBox] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [carousalIndex, setCarousalIndex] = useState(0);
+  const timeoutRef = useRef(null);
   
+  const resetTimeout = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+  }
+
+  useEffect(() => {
+    resetTimeout();
+    timeoutRef.current = setTimeout(
+      () =>
+        setCarousalIndex((prevIndex) =>
+          prevIndex === 4 - 1 ? 0 : prevIndex + 1
+        ),
+      delay
+    );
+
+    return () => {
+      resetTimeout();
+    };
+  }, [carousalIndex]);
+   
   const nextSlide = () => {
     if(slideIndex !== transformationsdata.length){
         setSlideIndex(slideIndex + 1)
@@ -30,18 +58,47 @@ const prevSlide = () => {
     }
 }
 
+const nextSlide1 = () => {
+  if(slideIndex1 !== testData.length){
+      setSlideIndex1(slideIndex1 + 1)
+  } 
+  else if (slideIndex1 === testData.length){
+      setSlideIndex1(1)
+  }
+}
+
+const prevSlide1 = () => {
+  if(slideIndex1 !== 1){
+      setSlideIndex1(slideIndex1 - 1)
+  }
+  else if (slideIndex1 === 1){
+      setSlideIndex1(testData.length)
+  }
+}
+
 const moveDot = index => {
   setSlideIndex(index)
 }
 
+const scrollToSection = () => {
+  const section = document.getElementById('contact');
+  window.scrollTo({
+    top: section.offsetTop,
+    behavior: 'smooth'
+  });
+};
+
+// console.log(coachingSections);
+
   return (
     <div className={styles.mainContainer}>
+      
       <div className={`${styles.container1} ${styles.bannerContainer}`}>
         <motion.div
           whileInView={{y: [100,50,0],opacity: [0,0,1]}}
           transition={{duration: 0.8}}
         >
-          <img src={urlFor(coachingSections[0].image)} alt="Banner Image"/>
+          <img style={{width:'30vw'}} src={urlFor(coachingSections[0].image)} alt="Banner Image"/>
         </motion.div>
         <motion.div 
           whileInView={{y: [-100,-50,0],opacity: [0,0,1]}}
@@ -49,9 +106,12 @@ const moveDot = index => {
           className={styles.bannerTextContainer}
         >
           <h1>{coachingSections[0].title}</h1>
-          <p>{coachingSections[0].desc}</p>
+          <div className={styles.textBody}>{coachingSections[0].desc && <PortableText value={coachingSections[0].desc} />}</div>
+          <button className='btn' onClick={scrollToSection}>Start now</button>
         </motion.div>
       </div>
+      
+      
       <div className={`${styles.container2} ${styles.bannerContainer}`}>
         <motion.div
           whileInView={{y: [-100,-50,0],opacity: [0,0,1]}}
@@ -65,9 +125,25 @@ const moveDot = index => {
           className={styles.bannerTextContainer}
         >
           <h1>{coachingSections[1].title}</h1>
-          <p>{coachingSections[1].desc}</p>
+          <div className={styles.textBody}>{coachingSections[1].desc && <PortableText value={coachingSections[1].desc} />}</div>
         </motion.div>
       </div>
+      
+      
+      
+        <motion.div
+          whileInView={{y: [-100,-50,0],opacity: [0,0,1]}}
+          transition={{duration: 0.8}}
+          className={`${styles.container3} ${styles.bannerContainer}`}
+        >
+          {/* {coachingSections.slice(2,).map((section,index)=>( */}
+            <Carousal sections={coachingSections} index={carousalIndex} setIndex={setCarousalIndex}/>
+            {/* <img src={urlFor(section.image)} alt="Banner Image"/> */}
+          {/* ))} */}
+          
+        </motion.div>      
+      
+
 
       <div className={styles.containerTransformation}>
         <h1>TRANSFORMATION DIARIES</h1>
@@ -120,7 +196,7 @@ const moveDot = index => {
               return(
                 <div 
                   key={obj._id}
-                  className={slideIndex === index + 1 ? `${styles.slide} ${styles.activeAnim}` : styles.slide}
+                  className={slideIndex1 === index + 1 ? `${styles.slide} ${styles.activeAnim}` : styles.slide}
                 >
                   <p>{obj.desc}</p>
                   <p>-{obj.name}</p>
@@ -130,14 +206,14 @@ const moveDot = index => {
             
           </div>
           <button
-              onClick={nextSlide}
+              onClick={nextSlide1}
               className={`${styles.btnSlide} ${styles.next}`}
             >
               <HiChevronDoubleRight />
             </button>
 
             <button
-              onClick={prevSlide}
+              onClick={prevSlide1}
               className={`${styles.btnSlide} ${styles.prev}`}
             >
               <HiChevronDoubleLeft />
@@ -153,7 +229,9 @@ const moveDot = index => {
             </div> */}
         
       </div>
-      <ContactForm page={'coaching'} />
+      <div id='contact'>
+        <ContactForm page={'coaching'} />
+      </div>
     </div>
   )
 }
@@ -161,7 +239,7 @@ const moveDot = index => {
 
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "coaching"]'
+  const query = '*[_type == "coaching"] | order(index asc)'
   const coachingSections = await client.fetch(query)
 
   const testQuery = '*[_type == "testimonials"]'

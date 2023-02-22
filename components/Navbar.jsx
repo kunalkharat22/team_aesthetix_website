@@ -7,12 +7,14 @@ import styles from './Navbar.module.scss'
 import {BsFillCartFill} from 'react-icons/bs'
 import { useStateContext } from '../context/StateContext'
 import Cart from './Cart'
+import { useRouter } from 'next/router';
 
 
 const Navbar = () => {
 
   const [toggle, setToggle] = useState(false)
   const {showCart, setShowCart, totalQuantities} = useStateContext()
+  const router = useRouter();
 
   return (
     <div className='navbar-container'>
@@ -27,32 +29,26 @@ const Navbar = () => {
               <h1>Home</h1>
             </Link>
           </li> */}
-          <li>
+          <li className={router.pathname === '/PersonalCoaching' ? 'active' : ''}>
             <Link href={`/PersonalCoaching`} as={`/PersonalCoaching`}>
               <h1>Online coaching</h1>
             </Link>
-          </li>
-          {/* <li>
-            <Link href={`/Army`}>
-              <h1>Our Army</h1>
-            </Link>
-          </li> */}
-          <li>
+          </li>        
+          <li className={router.pathname === '/Blogs' ? 'active' : ''}>
             <Link href={`/Blogs`}>
               <h1>Blogs</h1>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname === '/Products' ? 'active' : ''}>
             <Link href={`/Products`}>
               <h1>Products</h1>
             </Link>
           </li>
-          <li>
+          <li className={router.pathname === '/Contact' ? 'active' : ''}>
             <Link href={`/Contact`}>
               <h1>Contact us</h1>
             </Link>
-          </li>
-        {/* ))} */}
+          </li>        
       </ul>
 
 
