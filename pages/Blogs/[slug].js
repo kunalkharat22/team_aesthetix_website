@@ -20,7 +20,7 @@ const PostDetails = (props) => {
   ? GetImage(postdata?.mainImage)
   : null;
 
-  console.log(postdata.body);
+  // console.log('aswd',postdata.body);
 
   return (
     <>
