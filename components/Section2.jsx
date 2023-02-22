@@ -80,7 +80,7 @@ const Section2 = ({section, postData}) => {
             <h1>{section.largeText1}</h1>
             <p>{section.desc1}</p>
             <div className='next'>
-              <Link href={`/blogs`}>
+              <Link href={`/Blogs`}>
                 <img src='./next.svg'/>
               </Link>
             </div>
