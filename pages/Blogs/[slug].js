@@ -30,12 +30,12 @@ const PostDetails = (props) => {
   return (
     <>
     <NextSeo 
-      title={`${postdata?.title} - ${siteconfig.title}`}
+      title={`${postdata?.title} - ${siteconfig?.title}`}
       description={postdata.excerpt || ""}
       canonical={`${siteconfig?.url}/Blogs/${postdata.slug.current}`}
       openGraph={{
         url: `${siteconfig?.url}/Blogs/${postdata.slug.current}`,
-        title: `${postdata?.title} - ${siteconfig.title}`,
+        title: `${postdata?.title} - ${siteconfig?.title}`,
         description: postdata.excerpt || "",
         images: [
           {
@@ -45,7 +45,7 @@ const PostDetails = (props) => {
             alt: ""
           }
         ],
-        site_name: `${siteconfig.title}`
+        site_name: `${siteconfig?.title}`
       }}
       twitter={{
         cardType: "summary_large_image"
