@@ -26,8 +26,6 @@ const PostDetails = (props) => {
   const ogimage = siteconfig?.openGraphImage
     ? GetImage(siteconfig?.openGraphImage).src
     : defaultOG.src;
-
-  console.log('props',siteconfig);
   
   return (
     <>
@@ -47,7 +45,7 @@ const PostDetails = (props) => {
             alt: ""
           }
         ],
-        site_name: siteconfig.title
+        site_name: `${siteconfig.title}`
       }}
       twitter={{
         cardType: "summary_large_image"
