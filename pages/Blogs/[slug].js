@@ -7,10 +7,13 @@ import Image from 'next/image';
 import {parseISO, format} from 'date-fns'
 import Link from 'next/link';
 import { Newsletter } from '../../components';
+import { NextSeo } from 'next-seo';
+import defaultOG from "../../public/open_graph_default.jpg";
+
 
 const PostDetails = (props) => {
 
-  const {postdata} = props
+  const {postdata, siteconfig} = props
 
   const AuthorimageProps = postdata?.author?.image
   ? GetImage(postdata.author.image)
@@ -20,10 +23,36 @@ const PostDetails = (props) => {
   ? GetImage(postdata?.mainImage)
   : null;
 
-  // console.log('aswd',postdata.body);
+  const ogimage = siteconfig?.openGraphImage
+    ? GetImage(siteconfig?.openGraphImage).src
+    : defaultOG.src;
 
+  console.log('props',siteconfig);
+  
   return (
     <>
+    <NextSeo 
+      title={`${postdata.title} - ${siteconfig.title}`}
+      description={postdata.excerpt || ""}
+      canonical={`${siteconfig?.url}/Blogs/${postdata.slug.current}`}
+      openGraph={{
+        url: `${siteconfig?.url}/Blogs/${postdata.slug.current}`,
+        title: `${postdata.title} - ${siteconfig.title}`,
+        description: postdata.excerpt || "",
+        images: [
+          {
+            url: GetImage(postdata?.mainImage).src || ogimage,
+            width: 800,
+            height: 600,
+            alt: ""
+          }
+        ],
+        site_name: siteconfig.title
+      }}
+      twitter={{
+        cardType: "summary_large_image"
+      }}
+    />
     <div className={styles.PostDetailsContainer}>
       {postdata && (
         <>
@@ -174,10 +203,17 @@ export const getStaticProps = async ({params}) => {
       slug: params.slug
     })
   
+    const configQuery = `
+  *[_type == "siteconfig"][0] {
+    ...,
+  }
+  `
+  const config = await client.fetch(configQuery)
   
     return{
       props: {
-        postdata: { ...post }        
+        postdata: { ...post },
+        siteconfig: { ...config},       
       },
       revalidate: 10
     }

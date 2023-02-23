@@ -51,9 +51,10 @@ const Carousal = ({sections, index, setIndex}) => {
 
   return (
     <div className={styles.slideshow} 
-    onTouchStart={handleTouchStart}
-    onTouchMove={handleTouchMove}
-    onTouchEnd={handleTouchEnd}>
+    // onTouchStart={handleTouchStart}
+    // onTouchMove={handleTouchMove}
+    // onTouchEnd={handleTouchEnd}
+    >
       <motion.div
         className={styles.slideshowSlider}
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}

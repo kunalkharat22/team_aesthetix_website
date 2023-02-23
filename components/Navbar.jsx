@@ -51,7 +51,7 @@ const Navbar = () => {
           </li>        
       </ul>
 
-
+      {totalQuantities>=1 ? 
       <div className='cartContainer'>
         <button type='button' className='cart-icon' onClick={() => setShowCart(true)}>
           <BsFillCartFill />
@@ -59,6 +59,15 @@ const Navbar = () => {
         </button>
         {showCart && <Cart />}
       </div>
+      :
+      <></>}
+      {/* <div className='cartContainer'>
+        <button type='button' className='cart-icon' onClick={() => setShowCart(true)}>
+          <BsFillCartFill />
+          <span className='cart-item-qty'>{totalQuantities}</span>
+        </button>
+        {showCart && <Cart />}
+      </div> */}
 
 
       <div className='navbar-menu'>

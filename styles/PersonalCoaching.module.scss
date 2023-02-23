@@ -444,6 +444,7 @@
   display: inline-block;
   position: relative;
   background-color: #363636;
+  border: solid 10px #121212;
   height: auto;
   min-height: 800px;
   width: 100%;
@@ -498,7 +499,7 @@
   white-space: normal;
 
   p{
-    margin: 2rem 0;
+    margin: 1.25rem 0;
   }
 
   strong{

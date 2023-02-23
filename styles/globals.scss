@@ -836,7 +836,11 @@ a {
   img{
     max-width: 12vw;
     min-width: 10rem;
-    
+  }
+
+  @media (max-width: 768px) {
+    min-height: 150px;
+    width: 150px;
   }
 
 }
