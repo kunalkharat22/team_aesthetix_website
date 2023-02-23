@@ -30,7 +30,7 @@ const PostDetails = (props) => {
   return (
     <>
     <NextSeo 
-      title={`${postdata.title} - ${siteconfig.title}`}
+      title={`${postdata?.title} - ${siteconfig.title}`}
       description={postdata.excerpt || ""}
       canonical={`${siteconfig?.url}/Blogs/${postdata.slug.current}`}
       openGraph={{
@@ -60,7 +60,7 @@ const PostDetails = (props) => {
           </div>
 
           <h1 className={styles.postTitle}>
-            {postdata && postdata.title}
+            {postdata?.title}
           </h1>
 
           <div className={styles.postdeets}>
