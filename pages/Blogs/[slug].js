@@ -35,7 +35,7 @@ const PostDetails = (props) => {
       canonical={`${siteconfig?.url}/Blogs/${postdata.slug.current}`}
       openGraph={{
         url: `${siteconfig?.url}/Blogs/${postdata.slug.current}`,
-        title: `${postdata.title} - ${siteconfig.title}`,
+        title: `${postdata?.title} - ${siteconfig.title}`,
         description: postdata.excerpt || "",
         images: [
           {
