@@ -60,7 +60,7 @@ const PostDetails = (props) => {
           </div>
 
           <h1 className={styles.postTitle}>
-            {postdata.title}
+            {postdata?.title}
           </h1>
 
           <div className={styles.postdeets}>
