@@ -39,7 +39,7 @@ const PostDetails = (props) => {
         description: postdata?.excerpt || "",
         images: [
           {
-            url: GetImage(postdata?.mainImage).src || ogimage,
+            url: GetImage(postdata?.mainImage)?.src || ogimage,
             width: 800,
             height: 600,
             alt: ""
