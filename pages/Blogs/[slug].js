@@ -163,7 +163,7 @@ const PostDetails = (props) => {
       )}
       
     </div>
-    <Newsletter />
+    {/* <Newsletter /> */}
     </>
   )
 }

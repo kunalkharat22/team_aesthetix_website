@@ -46,7 +46,7 @@ const Navbar = () => {
           </li>
           <li className={router.pathname === '/Contact' ? 'active' : ''}>
             <Link href={`/Contact`}>
-              <h1>Contact us</h1>
+              <h1>Contact</h1>
             </Link>
           </li>        
       </ul>
@@ -117,7 +117,7 @@ const Navbar = () => {
                 </li>
                 <li>
                   <Link href={`/Contact`}>
-                    <a onClick={() => setToggle(false)}>Contact us</a>
+                    <a onClick={() => setToggle(false)}>Contact</a>
                   </Link>
                 </li>
 

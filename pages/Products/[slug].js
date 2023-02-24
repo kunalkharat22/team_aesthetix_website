@@ -105,7 +105,7 @@ const ProductDetails = ({product,productData}) => {
           ))}
         </div>
       </div>
-      <Newsletter />
+      {/* <Newsletter /> */}
       { showModal ? <ImageModal imageUrl={imageUrl} onClose={handleCloseModal} /> : null }
     </div>
   )

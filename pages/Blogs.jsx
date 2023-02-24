@@ -75,7 +75,7 @@ So, if you wanna stay up to date with my latest posts, hit me up on Instagram an
       :
       <></>
       }
-      <Newsletter />
+      {/* <Newsletter /> */}
     </div>
   )
 }

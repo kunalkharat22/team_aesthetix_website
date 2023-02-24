@@ -187,6 +187,8 @@ const scrollToSection = () => {
             </div> */}
         </div>
       </div>
+
+      
       <div className={styles.containerTestimonials}>
         <h1>TESTIMONIALS</h1>
         <div className={styles.bgFlair}></div>
@@ -203,9 +205,7 @@ const scrollToSection = () => {
                 </div>
               )
             })}
-            
-          </div>
-          <button
+            <button
               onClick={nextSlide1}
               className={`${styles.btnSlide} ${styles.next}`}
             >
@@ -218,6 +218,8 @@ const scrollToSection = () => {
             >
               <HiChevronDoubleLeft />
             </button>
+          </div>
+          
 
             {/* <div className={styles.containerDots}>
                 {Array.from({length: 3}).map((item, index) => (

@@ -48,7 +48,7 @@ const Home = ({sections, bannerData, productdata, postData, config}) => {
 
       <Section3 section={sections.length && sections[2]} products={productdata}/>
       
-      <Newsletter />
+      {/* <Newsletter /> */}
       
       
 

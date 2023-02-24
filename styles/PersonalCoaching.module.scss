@@ -245,20 +245,20 @@
   }
 
   .prev {
-    top: 50%;
-    left: 31vw;
-    transform: translateY(-60%);
+    // top: 50%;
+    left: 10px;
+    // transform: translateY(-60%);
   }
   .next {
-    top: 50%;
-    right: 31vw;
-    transform: translateY(-60%);
+    // top: 50%;
+    right: 10px;
+    // transform: translateY(-60%);
   }
 
   
-  .btnSlide {
-    margin-top: 3rem;
-  }
+  // .btnSlide {
+  //   margin-top: 3rem;
+  // }
 }
 
 .testimonialsSlider {
@@ -394,7 +394,7 @@
   transition: transform .4s ease;
        
         &:hover {
-            transform: scale(1.1, 1.1);
+            transform: scale(0.9);
             opacity: 0.75;
         }
 

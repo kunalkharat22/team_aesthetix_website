@@ -31,7 +31,7 @@ const Products = ({productdata}) => {
         </Link>
       </div>
       <div className={styles.newsletter}>
-        <Newsletter />
+        {/* <Newsletter /> */}
       </div>
       
     </div>
