@@ -12,11 +12,11 @@ const Products = ({productdata}) => {
   return (
     <div className={styles.mainContainer}>
       {/* <img className={styles.bannerImage} src={urlFor(productdata[0].image[0])}/> */}
-      <div className={styles.bgFlair}></div>
+      {/* <div className={styles.bgFlair}></div> */}
       <div className={styles.title}>        
         <h1>SHOP FOR EBOOKS AND PROGRAMS</h1>
       </div>
-      <div className={styles.productsContainer}>
+      <div className={`${styles.productsContainer} ${styles.bgFlair}`}>
       {productdata.length ?
         productdata?.map((product,index) => (
         <Product key={index} product={product}/>
