@@ -41,9 +41,9 @@ const ProductDetails = ({product,productData,siteconfig}) => {
     <NextSeo 
       title={`${product?.title} - ${siteconfig?.title}`}
       description={product?.desc || ""}
-      canonical={`${siteconfig?.url}/Products/${product?.slug.current}`}
+      canonical={`${siteconfig?.url}Products/${product?.slug.current}`}
       openGraph={{
-        url: `${siteconfig?.url}/Products/${product?.slug.current}`,
+        url: `${siteconfig?.url}Products/${product?.slug.current}`,
         title: `${product?.title} - ${siteconfig?.title}`,
         description: product?.desc || "",
         images: [
