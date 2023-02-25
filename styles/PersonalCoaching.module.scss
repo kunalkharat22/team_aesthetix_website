@@ -419,7 +419,7 @@
 
 .container3{
  height: auto;
- margin: 3rem 0;
+//  margin: 3rem 0;
  display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -447,7 +447,7 @@
   background-color: #363636;
   border: solid 10px #121212;
   height: auto;
-  min-height: 800px;
+  min-height: 80vh;
   width: 100%;
   border-radius: 40px;
   padding: 2rem 25vw;
@@ -472,6 +472,10 @@
   // transform: translate(-50%, -50%);
   line-height: 1.75;
   white-space: normal;
+
+  h1{
+    line-height: 1.25;
+  }
 }
 /* Buttons */
 
@@ -500,7 +504,7 @@
   white-space: normal;
 
   p{
-    margin: 1.25rem 0;
+    margin: 1rem 0;
   }
 
   strong{
@@ -583,7 +587,7 @@
   .carousalSlide{
     padding: 1rem 10px;
     height: auto;
-    min-height: 675px;
+    min-height: 600px;
     // position: absolute;
     // top: 50%;
     // left: 50%;
