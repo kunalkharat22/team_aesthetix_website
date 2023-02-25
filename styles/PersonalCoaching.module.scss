@@ -291,6 +291,7 @@
   position: relative;
   flex-direction: column;
   text-align: center;
+  height: auto;
   min-height: 100vh;
   width: 100%;
   background-color: #23262A;
@@ -309,7 +310,7 @@
   width: 100%;
   justify-content: center;
   align-items: center;
-  margin: 1rem;
+  margin: 0 1rem;
   flex-direction: column;
 
   form{
