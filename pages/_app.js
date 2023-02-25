@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps, config }) {
 
   return (
     <StateContext>
-      <DefaultSeo 
+      {/* <DefaultSeo 
         title={config?.title}
         description={config?.description || ""}
         canonical={config?.url}
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps, config }) {
               site: "@kunal010_cule",
               cardType: "summary_large_image"
             }}
-      />
+      /> */}
       <Toaster />
       <Layout>
         <Component {...pageProps} />
@@ -55,15 +55,15 @@ function MyApp({ Component, pageProps, config }) {
   )
 }
 
-MyApp.getInitialProps = async (appContext) => {
-  const appProps = await App.getInitialProps(appContext);
-  const configQuery = `
-    *[_type == "siteconfig"][0] {
-      ...
-    }
-  `;
-  const config = await client.fetch(configQuery);
-  return { ...appProps, config };
-};
+// MyApp.getInitialProps = async (appContext) => {
+//   const appProps = await App.getInitialProps(appContext);
+//   const configQuery = `
+//     *[_type == "siteconfig"][0] {
+//       ...
+//     }
+//   `;
+//   const config = await client.fetch(configQuery);
+//   return { ...appProps, config };
+// };
 
 export default MyApp

@@ -68,7 +68,7 @@ const Section3 = ({section, products}) => {
               <p className='p-text'>{section.desc1}</p>
               <div className='next'>
                 <Link href={`/Products`}>
-                  <img src='./next.svg' style={{display:'block'}}/>
+                  <img src='./next.svg' style={{display:'block'}} alt='next'/>
                 </Link>
               </div>
             </div>  

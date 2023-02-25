@@ -8,9 +8,11 @@ import Newsletter from '../../components/Newsletter'
 import {motion} from 'framer-motion'
 import {useStateContext} from '../../context/StateContext'
 import ImageModal from '../../components/ImageModal'
+import { configQuery } from '../../lib/queries'
+import ogimage from '../../public/open_graph_default.jpg'
+import { NextSeo } from 'next-seo'
 
-const ProductDetails = ({product,productData}) => {
-
+const ProductDetails = ({product,productData,siteconfig}) => {
   const {desc, image, subtitle, price, title} = product
 
   const [index, setIndex] = useState(0)
@@ -35,6 +37,29 @@ const ProductDetails = ({product,productData}) => {
   }
   
   return (
+    <>
+    <NextSeo 
+      title={`${product?.title} - ${siteconfig?.title}`}
+      description={product?.desc || ""}
+      canonical={`${siteconfig?.url}/Products/${product?.slug.current}`}
+      openGraph={{
+        url: `${siteconfig?.url}/Products/${product?.slug.current}`,
+        title: `${product?.title} - ${siteconfig?.title}`,
+        description: product?.desc || "",
+        images: [
+          {
+            url: urlFor(product?.image[0]) || ogimage,
+            width: 800,
+            height: 600,
+            alt: ""
+          }
+        ],
+        site_name: `${siteconfig?.title}`
+      }}
+      twitter={{
+        cardType: "summary_large_image"
+      }}
+    />
     <div className={styles.mainContainer}>
       <div className={styles.productDetailContainer}>
         <div className={styles.imageContainer}>
@@ -108,6 +133,7 @@ const ProductDetails = ({product,productData}) => {
       {/* <Newsletter /> */}
       { showModal ? <ImageModal imageUrl={imageUrl} onClose={handleCloseModal} /> : null }
     </div>
+    </>
   )
 }
 
@@ -140,10 +166,10 @@ export const getStaticProps = async ({params:
 
   const productQuery = '*[_type == "products"]'
   const productData = await client.fetch(productQuery)
-
+  const config = await client.fetch(configQuery)
 
   return{
-    props: {product,productData}
+    props: {product,productData,siteconfig: { ...config}}
   }
 }
 

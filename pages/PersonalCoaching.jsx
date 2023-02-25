@@ -7,10 +7,13 @@ import {motion} from 'framer-motion'
 import ContactForm from '../components/ContactForm'
 import { PortableText } from '../lib/client'
 import Carousal from '../components/Carousal'
+import {configQuery} from '../lib/queries'
+import { NextSeo } from 'next-seo'
+import ogimage from "../public/open_graph_default.jpg";
 
 const delay = 20000;
 
-const PersonalCoaching = ({coachingSections,testData,transformationsdata}) => {
+const PersonalCoaching = ({coachingSections,testData,transformationsdata,config}) => {
   const [slideIndex, setSlideIndex] = useState(1)
   const [slideIndex1, setSlideIndex1] = useState(1)
   const [box, setBox] = useState('')
@@ -91,6 +94,29 @@ const scrollToSection = () => {
 // console.log(coachingSections);
 
   return (
+    <>
+    <NextSeo 
+      title={`Online Personal Coaching - ${config?.title}`}
+      description={config?.description || ""}
+      canonical={`${config?.url}/PersonalCoaching`}
+      openGraph={{
+        url: `${config?.url}/PersonalCoaching`,
+        title: `${config?.title} - Online Coaching`,
+        description: config?.description || "",
+            images: [
+              {
+                url: ogimage,
+                width: 800,
+                height: 600,
+                alt: config?.title
+              }
+            ],
+            site_name: "Team Aesthetix"
+          }}
+          twitter={{
+            cardType: "summary_large_image"
+          }}
+    />
     <div className={styles.mainContainer}>
       
       <div className={`${styles.container1} ${styles.bannerContainer}`}>
@@ -157,7 +183,8 @@ const scrollToSection = () => {
                     // className={styles.slide}
                     >  
                         <img 
-                        src={urlFor(obj.image[0])} 
+                        src={urlFor(obj.image[0])}
+                        alt='transformation-img' 
                         />
                         <p>{obj.desc}</p>
                     </div>
@@ -235,6 +262,7 @@ const scrollToSection = () => {
         <ContactForm page={'coaching'} />
       </div>
     </div>
+    </>
   )
 }
 
@@ -250,8 +278,10 @@ export const getServerSideProps = async () => {
   const transformationsQuery = '*[_type == "transformations"]'
   const transformationsdata = await client.fetch(transformationsQuery)
 
+  const config = await client.fetch(configQuery)
+
   return{
-    props: {coachingSections,testData,transformationsdata}
+    props: {coachingSections,testData,transformationsdata,config}
   }
 }
 

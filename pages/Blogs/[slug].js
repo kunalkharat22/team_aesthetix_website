@@ -9,7 +9,7 @@ import Link from 'next/link';
 import { Newsletter } from '../../components';
 import { NextSeo } from 'next-seo';
 import defaultOG from "../../public/open_graph_default.jpg";
-
+import { configQuery } from '../../lib/queries';
 
 const PostDetails = (props) => {
 
@@ -201,11 +201,7 @@ export const getStaticProps = async ({params}) => {
       slug: params.slug
     })
   
-    const configQuery = `
-  *[_type == "siteconfig"][0] {
-    ...,
-  }
-  `
+    
   const config = await client.fetch(configQuery)
   
     return{

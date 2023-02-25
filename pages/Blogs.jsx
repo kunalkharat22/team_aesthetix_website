@@ -7,8 +7,11 @@ import {client} from '../lib/client'
 import PostList from '../components/postList'
 import Newsletter from '../components/Newsletter'
 import Link from 'next/link'
+import {configQuery} from '../lib/queries'
+import { NextSeo } from 'next-seo'
+import ogimage from "../public/open_graph_default.jpg";
 
-const Blogs = ({postData}) => {
+const Blogs = ({postData, config}) => {
 
   // console.log(postData);
 
@@ -20,8 +23,30 @@ const Blogs = ({postData}) => {
   }, []);
 
   return (
+    <>
+    <NextSeo 
+      title={`Blogs - ${config?.title}`}
+      description={config?.description || ""}
+      canonical={`${config?.url}/Blogs`}
+      openGraph={{
+        url: `${config?.url}/Blogs`,
+        title: `Blogs - ${config?.title}`,
+        description: config?.description || "",
+            images: [
+              {
+                url: ogimage,
+                width: 800,
+                height: 600,
+                alt: config?.title
+              }
+            ],
+            site_name: "Team Aesthetix"
+          }}
+          twitter={{
+            cardType: "summary_large_image"
+          }}
+    />
     <div className='blog-container'>
-      
       <div className={styles.blogPostContainer}>
         <div className={styles.postContainer1}>
           {postData.length ?
@@ -77,6 +102,7 @@ So, if you wanna stay up to date with my latest posts, hit me up on Instagram an
       }
       {/* <Newsletter /> */}
     </div>
+    </>
   )
 }
 
@@ -89,14 +115,10 @@ export const getServerSideProps = async () => {
   `
   const postData = await client.fetch(postQuery)
 
-  // const bannerQuery = '*[_type == "banner"]'
-  // const bannerData = await client.fetch(bannerQuery)
-
-  // const productQuery = '*[_type == "products"]'
-  // const productdata = await client.fetch(productQuery)
+  const config = await client.fetch(configQuery)
 
   return{
-    props: {postData}
+    props: {postData, config}
   }
 }
 

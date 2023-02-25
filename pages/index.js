@@ -18,7 +18,7 @@ const Home = ({sections, bannerData, productdata, postData, config}) => {
     <>
       
       <NextSeo 
-        title={`${config?.title}`}
+        title={`${config?.title} - Fitness Aesthetics Redefined`}
         description={config?.description || ""}
         canonical={config?.url}
         openGraph={{

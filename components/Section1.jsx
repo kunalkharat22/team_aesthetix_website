@@ -24,7 +24,7 @@ const Section1 = ({section}) => {
           <p className='p-text'>{section.desc1}</p>
           <div className='next'>
             <Link href={`/PersonalCoaching`} as={`/PersonalCoaching`}>
-              <img src='./next.svg' style={{display:'block'}}/>
+              <img src='./next.svg' style={{display:'block'}} alt='next'/>
             </Link>
           </div>  
         </div>
@@ -37,7 +37,7 @@ const Section1 = ({section}) => {
             key={currentIndex}             
             >
             {/* {section.midText1 && <h1>{section.midText1[currentIndex]}</h1>} */}
-            <img className='section-content-2-img' src={urlFor(section.image[currentIndex])}/>
+            <img className='section-content-2-img' src={urlFor(section.image[currentIndex])} alt='online-coaching-banner-img'/>
             <h1>{section.largeText2}</h1>
             {/* {section.desc2 && <p>{section.desc2[currentIndex]}</p>} */}
             {section.desc2 && <PortableText value={section.desc2} />}

@@ -45,7 +45,7 @@ const Banner = ({bannerData}) => {
 
   return (
     <div className='banner-container'>
-      <img className='bg-img' src={urlFor(bannerData.image)}/>
+      <img className='bg-img' src={urlFor(bannerData.image)} alt='banner-bg-img'/>
       <motion.div 
         initial="hidden"
         animate="visible"
@@ -61,7 +61,7 @@ const Banner = ({bannerData}) => {
             {bannerData.boxes.map((box) => 
             ( <div key={box._key}>            
               <div className='banner-box'>  
-                <img src={urlFor(box.boxImage)}/>
+                <img src={urlFor(box.boxImage)} alt='features-svgs'/>
                 <p>{box.boxTitle}</p>
               </div>
               <div className='banner-box-animate'>                  

@@ -61,7 +61,7 @@ const Section2 = ({section, postData}) => {
           className='section-content blog'          
         >
           {/* <h1>I USE MY INSTAGRAM FEED AS A MINI BLOG</h1> */}
-          <img src={urlFor(postData.mainImage)}/>
+          <img src={urlFor(postData.mainImage)} alt='banner-blog-img'/>
           {postData.title && <h1>{postData.title}</h1>} 
           {postData.excerpt && 
             <p>{postData.excerpt} 
@@ -81,7 +81,7 @@ const Section2 = ({section, postData}) => {
             <p>{section.desc1}</p>
             <div className='next'>
               <Link href={`/Blogs`}>
-                <img src='./next.svg'/>
+                <img src='./next.svg' alt='next'/>
               </Link>
             </div>
            
