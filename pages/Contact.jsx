@@ -37,7 +37,17 @@ const Contact = ({config}) => {
       />
     <div>
       <ContactForm page={'contact'}/>
-
+      <div className={styles.policy}>
+        <Link href='/PrivacyPolicy'>
+          <a>
+            <p>Privacy Policy</p>
+          </a>
+        </Link>
+        <a href='https://www.termsandconditionsgenerator.com/live.php?token=9YI3hfJO8jLJZ2VkpCzwJHrP5Z2jgzWh'>
+           <p>Terms of Service</p>
+        </a>
+      </div>
+          
       <div className={styles.instagram}>
         {/* <h1>Connect to me on any of the below links</h1> */}
         {/* <a href={config?.social[0]?.url} target='_blank' rel="noreferrer noopener">

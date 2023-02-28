@@ -43,3 +43,13 @@
 .newsletter{
   background-color: var(--black);
 }
+
+.policy{
+  color: var(--white-color);
+  display: flex;
+  justify-content: center;
+}
+
+.policy > *{
+  margin: 1rem;
+}
